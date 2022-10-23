@@ -1,0 +1,53 @@
+﻿@model IEnumerable<KT01.Models.BaiHat>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2 style="color: blue">DANH SÁCH BÀI HÁT THEO ALBUM</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p><span style = "font-weight: bold">ALBUM: </span> @ViewBag.Name</p>
+<img src="@ViewBag.AnhBia" style="width: 90px; border-radius: 50%" alt="Alternate Text" />
+<div style="margin-bottom: 20px"></div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaTL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaNS)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ma)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaTL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaNS)
+        </td>
+        <td>
+            @Html.ActionLink("Delete from Album", "Delete", new { item.Ma, ViewBag.MaAB })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,46 @@
+﻿@model KT01.Models.Album
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div id="errorMessage" style="color: red; font-weight: bold">@ViewBag.Err</div>
+<h2>Tạo lbum mới</h2>
+
+@using (Html.BeginForm("Create", "Album", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ten, new { @class = "control-label col-md-2" })
+            <div class="col-md-10" style="width: 100%">
+                @Html.EditorFor(model => model.Ten)
+                @Html.ValidationMessageFor(model => model.Ten)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="file" name="uploadFile" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<style>
+    #Ten{
+        width: 100%;
+    }
+</style>

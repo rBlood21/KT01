@@ -1,0 +1,35 @@
+﻿@model IEnumerable<KT01.Models.Album>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>ALBUM</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="row">
+    @foreach (var item in Model) {
+        <div class="card col-4 m-abl">
+            <img src="@item.AnhBia" style="width: 90px; border-radius: 50%" alt="Alternate Text" />
+            <p style="font-weight: bold">
+                @Html.DisplayFor(modelItem => item.Ten)
+            </p>
+            <p>
+                @Html.DisplayFor(modelItem => item.NgayTao)
+            </p>
+            <p>
+                @Html.ActionLink("Details", "Details", new { item.Ma })
+            </p>
+        </div>
+    }
+</div>
+<style>
+    .m-abl{
+        background-color: #0000;
+        color: #fff;
+    }
+</style>
+
